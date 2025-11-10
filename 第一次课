@@ -1,9 +1,11 @@
 #R工具栏介绍
-Save the script by going to "File - Run R script file".
-"File - Save Workspace" 不仅可以保存脚本，还有其他之前没完成的一些内容会继续留着，可以下次使用
-“文件-改变工作目录”
+ Save the script by going to "File - Run R script file".
+ "File - Save Workspace" 不仅可以保存脚本，还有其他之前没完成的一些内容会继续留着，可以下次使用
+ “文件-改变工作目录”
  “程序包-终止当前的计算” 中断运行
 
+
+# 基本参数：
 * > 开启一个命令行
 * 安装程序包的命令：install.packages("ape")
   安装后要加载包：library("ape")
@@ -23,3 +25,122 @@ Save the script by going to "File - Run R script file".
   library（ape） #打开ape软件包的帮助文件
   ？plot.phylo   #查找ape包z中plot.phylo函数的帮助
   将其中的example文件粘贴到console（控制台）中，查看运行结果
+* 逻辑型：x<TRUE      y<FALSE
+  空值： x<NA
+
+
+# R数据对象（一个完整试验的全部观测值）
+  向量(vector) :由相同基本类型数值组成的序列（数值、字符、逻辑、空值均可）
+  数组(array)：多个向量叠加
+  矩阵(matrix):全都是数字形式
+  数据框（data frame）：在矩阵基础上，添加行列的标签
+  列表(list) 
+
+* 向量vector
+1.在R语言中使用函数c()来创建一个向量
+  x<-c(1,2,3,4,5)  # <- 是表示 “把右边的值赋给左边的变量”
+  x  或  print（x）
+  输出为：
+  [1] 1 2 3 4 5    #[1]为输出内容的行号
+2.向量运算
+  x<-c(1,2,3,4)
+  x+1
+  x
+  输出为：
+  [1] 2 3 4 5
+3.快速生成有序向量
+· 利用：只能生成步长为1的向量，eg：
+  x<-1:10   #输出1-10
+  x
+  输出为:
+  [1] 1 2 3 4 5 6 7 8 9 10
+· 生成任意步长的向量需要用函数seq(),它有三个参数（最小值，最大值，步长），eg：
+  x<-seq(1,5,0.5)
+  x
+  输出：
+  [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0
+· rep（）函数，重复一个基本数值多次创建一个较长的向量，有两个参数（数据，重复次数），eg:
+  x<-rep(1.10)
+  x
+  输出：
+  [1] 1 1 1 1 1 1 1 1 1 1 
+4.向量索引
+· 也称向量中数值元素的下标，用来引用向量中的单个数值，用方括号[]表示，eg:
+  x<-c(1,2,3,4,5)
+  x[1]
+  输出：
+  [1] 1
+
+* 数组
+1.向量是一堆数组，利用array()来创建数组，参数为（数据向量，维数向量）
+2.基本格式：array(vector,dim,dimname)  # dim：数组的维数  dimname：各维数对应的名称，dimname必须是个列表！不需要时可省略
+3.举例：
+· x<-array(c(1,2,3,4),c(2,2))  #c(2,2) 意思是将向量1，2，3，4分为两行，每行两个数字
+  x
+  输出：先列后行（R自己试验，不好打出来）
+· x<-array(c(1,2,3,4),c(2,2),list(c("男","女"),c("A","B")))    #c("男","女"):列  c("A","B")：行
+  x
+  输出：自己试验
+
+* 矩阵
+1.二维数组
+2.基本语法：matrix(vector,nrow,ncol)
+3.eg:
+· x<-matrix(c(1,2,3,4),2,2)
+  x
+  输出：
+· x<-matrix(NA,2,2);a<-c(1,2);b<-c(2,1)
+  x[1,]=a;x[2,]=b
+  x
+  解释: x<-matrix(NA,2,2)    # 建立一个 2×2 的矩阵；所有元素初始为 NA（缺失值）
+       a<-c(1,2);b<-c(2,1)   # 这两行定义了两个向量：向量名  内容
+                                                   a	      1, 2
+                                                   b	      2, 1
+       x[1,] = a;x[2,] = b   # 第 1 行填入向量 a；第 2 行填入向量 b
+       
+* 数据框
+1.用data.frame()来创建数据框
+2.基本语法：mydata<-data.frame(col1,col2,col3·····)   #col代表列 注意：每一列的数据类型必须相同
+3.举例：
+· x<-c("张三","李四","王五","赵六");y<-c("男","女","女","男");z<-c(89,90,78,67);
+  data.frame(x,y,z)
+  输出:
+· x<-c("张三","李四","王五","赵六");y<-c("男","女","女","男");z<-c(89,90,78,67);
+  data.frame(x,y,z)  #x,y,z 分别是第一、二、三列
+  my_data=data.frame(x,y,z)
+  my_data
+  输出：
+· row.names(my_data)<-c("a","b","c","d")  #对列改名字
+  my_data
+· data.frame(姓名=x,性别=y,分数=z) #对行改名字
+· my_data[1,] #只取第一行
+· my_data[1,c(1,3)]  #只取第一行的第1、3列数据
+· my_data[1,c(1：2)] #只取第一行的第1-2列数据
+
+* 列表
+
+
+#从控制台输入数据
+1.数据较少的时候可以从控制台直接输入：如单样本t检验
+  height<-c(1.75,1.90,1.65,1.90,1.74,1.91)
+  weight<-c(60,72,57,90,95,72)
+  name<-c("x1","x2","x3","x4","x5","x6")  #定义了六个人的身高、体重、名字
+  sq.height<-height^2   #把height中每个元素平方后的结果，保存到一个新变量sq.height中
+  ratio<-weight/sq.height  #计算体重与身高平方的比值，即BMI
+  t.test(ratio,mu=24)  #是R的t.test()函数，含义是：检验样本平均值（样本的平均BMI）是否与假设均值μ=24有显著差异
+
+
+
+# read.csv()的使用
+1.test.data<-read.csv("data1.csv",header=TRUE)
+2.test.data<-read.table("example1.txt"),header=TRUE,fileEcncoding="GBK") #中文Windows常用
+例：mydata<-read.csv("C:/Users/LENOVO/WPS Cloud Files/.1510649404/cachedata/FA0E6ECC761C43BAB0AC1250A23D3069/data.csv")
+注意：1.excel整理数据时，导出csv格式，用read.csv()读入
+2.要将
+
+
+
+
+
+
+  
