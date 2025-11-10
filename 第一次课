@@ -136,7 +136,13 @@
 2.test.data<-read.table("example1.txt"),header=TRUE,fileEcncoding="GBK") #中文Windows常用
 例：mydata<-read.csv("C:/Users/LENOVO/WPS Cloud Files/.1510649404/cachedata/FA0E6ECC761C43BAB0AC1250A23D3069/data.csv")
 注意：1.excel整理数据时，导出csv格式，用read.csv()读入
-2.要将
+2.要将读入的数据放入工作目录，读入数据就会不用输路径。
+  解释：用getwd（）可以看R在哪个工作目录下，我的电脑：
+  >getwd()
+  [1]"C:/Users/LENOVO/Documents"  #表示在documents即文档中，所以保存数据时，就将数据保存到Documents中，然后运行：
+  >mydata<-read.csv("data.csv")   #data.csv是我保存的文件名
+3.数据读入要赋给一个数据集。上述命令中test.data/mydata即为数据集。所有数据就会在数据集中储存
+4.数据集中每一个变量（因素或观测值对应的列）可用“数据集名$列名”调出，如test.data$weight
 
 
 
