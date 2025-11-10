@@ -1,0 +1,25 @@
+#R工具栏介绍
+Save the script by going to "File - Run R script file".
+"File - Save Workspace" 不仅可以保存脚本，还有其他之前没完成的一些内容会继续留着，可以下次使用
+“文件-改变工作目录”
+ “程序包-终止当前的计算” 中断运行
+
+* > 开启一个命令行
+* 安装程序包的命令：install.packages("ape")
+  安装后要加载包：library("ape")
+  完成后就可以运行这个包了
+* 其他安装包如：install.packages("vegan")
+* 查看帮助文件：help("t.twxt")
+  1.以lm函数为例：
+  im(stats) # 函数名及所在包
+  Fitting Linear Models #标题
+  Usage # 参数
+  Arguments # 参数
+  Details #详情
+  Author(s) # 作者
+  References # 参考文献
+  Examples # 举例
+  2.查看帮助文件：
+  library（ape） #打开ape软件包的帮助文件
+  ？plot.phylo   #查找ape包z中plot.phylo函数的帮助
+  将其中的example文件粘贴到console（控制台）中，查看运行结果
