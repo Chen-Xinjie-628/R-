@@ -1,2 +1,6 @@
 # 多因素方差分析
 公式：avo(model,data=数据框名) #model是效应来源，如y=A+B+A:B，表示A效应、B效应和A与B的互作效应
+eg：杨树林
+data1=data.frame(height=c(10.9,10.8,11.1,9.1,11.8,10.1,10.0,9.3,9.1,12.3,12.5,10.7,13.9,10.6,11.5,10.4,12.2,14.0,10.5,10.1,16.8,11.8,14.1,14.4),type=c("A","B","C","D","E","F","G","H"),block=rep(c("1","2","3"),each=8))
+result1 <-aov(height~type+block,data=data1)
+summary(result1)
