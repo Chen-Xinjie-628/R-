@@ -44,7 +44,7 @@ day temp
   anova.data<-data.frame(a,b,c)
   anova.data
   single_column.data <- as.vector(as.matrix(anova.data)) #as.matrix(anova.data) 将 anova.data 转换为一个矩阵  #as.vector(...) 会将其参数转换为 向量（vector）具体来说，它会将矩阵中的所有元素按列顺序（默认情况下）提取并组合成一个向量 
-  data.frame(days=single_column.data,type=c(rep("a",11),rep("b",11),rep("c",11))) #days = single_column.data：这一部分是将 single_column.data 赋值给新数据框中的 days 列。rep("a", 11)：rep() 函数会重复 "a" 字符串 11 次，生成一个长度为 11 的向量 c("a", "a", ..., "a")
+  data.frame<-(days=single_column.data,type=c(rep("a",11),rep("b",11),rep("c",11))) #days = single_column.data：这一部分是将 single_column.data 赋值给新数据框中的 days 列。rep("a", 11)：rep() 函数会重复 "a" 字符串 11 次，生成一个长度为 11 的向量 c("a", "a", ..., "a")
   anova.test.data=data.frame(days=single_column.data,type=c(rep("a",11),rep("b",11),rep("c",11)))
   anova.test.data
   Re<-aov(days~type,data=anova.test.data）#aov()：这是 R 语言中用于执行方差分析的函数，通常用于比较不同组之间的均值是否有显著差异。days ~ type：这部分表示 days 作为因变量（被解释变量），type 作为自变量（解释变量）。即，我们要检验 days 数据在不同类型（a, b, c）下是否存在显著差异。data = anova.test.data：指定数据框 anova.test.data 作为数据来源，包含了 days 和 type 两列。
