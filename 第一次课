@@ -133,7 +133,7 @@
 
 # read.csv()的使用
 1.test.data<-read.csv("data1.csv",header=TRUE)
-2.test.data<-read.table("example1.txt"),header=TRUE,fileEcncoding="GBK") #中文Windows常用
+2.test.data<-read.table("example1.txt",header=TRUE,fileEcncoding="GBK") #中文Windows常用
 例：mydata<-read.csv("C:/Users/LENOVO/WPS Cloud Files/.1510649404/cachedata/FA0E6ECC761C43BAB0AC1250A23D3069/data.csv")
 注意：1.excel整理数据时，导出csv格式，用read.csv()读入
 2.要将读入的数据放入工作目录，读入数据就会不用输路径。
